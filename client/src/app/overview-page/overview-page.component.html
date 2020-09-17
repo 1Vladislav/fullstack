@@ -1,11 +1,10 @@
 <div class="page-title">
   <h4>
-    Обзор за вчера ({{yesterday | date: 'dd.MM.yyyy'}})
-    <i
-      class="material-icons black-text pointer"
-      (click)="openInfo()"
-    >
-      info_outline</i>
+    Обзор за вчера
+    ({{yesterday | date:'dd.MM.yyyy'}})
+    <i class="material-icons black-text pointer" (click)="openInfo()">
+      info_outline
+    </i>
   </h4>
 </div>
 
@@ -21,8 +20,8 @@
         <h3
           class="m0 mb1"
           [ngClass]="{
-          'green-text text-darken-2':data.gain.isHigher,
-          'red-text':!data.gain.isHigher
+            'green-text text-darken-2': data.gain.isHigher,
+            'red-text': !data.gain.isHigher
           }"
         >
           <i class="material-icons">
@@ -50,19 +49,17 @@
         <h3
           class="m0 mb1"
           [ngClass]="{
-          'green-text text-darken-2':data.orders.isHigher,
-          'red-text':!data.orders.isHigher
+            'green-text text-darken-2': data.orders.isHigher,
+            'red-text': !data.orders.isHigher
           }"
         >
-          <i
-            class="material-icons">
+          <i class="material-icons">
             {{data.orders.isHigher ? 'arrow_upward' : 'arrow_downward'}}
-            </i>
+          </i>
           {{data.orders.percent}}%
         </h3>
         <p>
-          Число заказов вчера на
-          {{data.orders.percent}}%
+          Число заказов вчера на {{data.orders.percent}}%
           {{data.orders.isHigher ? 'выше' : 'ниже'}}
           среднего значения:
           {{data.orders.compare}}
@@ -76,6 +73,7 @@
 <ng-template #loader>
   <app-loader></app-loader>
 </ng-template>
+
 
 <div class="tap-target" data-target="menu" #tapTarget>
   <div class="tap-target-content">

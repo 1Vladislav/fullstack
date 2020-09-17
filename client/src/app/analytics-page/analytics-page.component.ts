@@ -25,12 +25,12 @@ export class AnalyticsPageComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(){
     const gainConfig:any={
       label:'Выручка',
-      color:'rgb(255,99,132)'
+      color:'rgba(234,76,55,1)'
     };
 
     const orderConfig:any={
       label:'Заказы',
-      color:'rgb(54,162,235)'
+      color:'rgba(53,70,227,1)'
     };
 
     this.aSub = this.service.getAnalytics().subscribe((data:AnalyticsPage)=>{
@@ -43,10 +43,10 @@ export class AnalyticsPageComponent implements AfterViewInit, OnDestroy {
       orderConfig.data = data.chart.map(item=>item.order);
 
       //***** temp gain*****
-      /*gainConfig.labels.push('08.05.2018');
-      gainConfig.labels.push('09.05.2018');
-      gainConfig.labels.push('11.05.2018');
-      gainConfig.labels.push('12.05.2018');
+      /*gainConfig.labels.push('08.03.2018');
+      gainConfig.labels.push('09.02.2018');
+      gainConfig.labels.push('11.02.2018');
+      gainConfig.labels.push('12.04.2018');
       gainConfig.data.push(9800000);
       gainConfig.data.push(19800000);
       gainConfig.data.push(78000000);
@@ -62,13 +62,13 @@ export class AnalyticsPageComponent implements AfterViewInit, OnDestroy {
       orderConfig.data.push(2);
       orderConfig.data.push(10);
       orderConfig.data.push(120);*/
-      //***** temp *****
+      //!***** temp *****
 
 
       const gainCtx = this.gainRef.nativeElement.getContext('2d');
       const orderCtx = this.orderRef.nativeElement.getContext('2d');
-      gainCtx.canvas.height = '300px';
-      orderCtx.canvas.height = '300px';
+      gainCtx.canvas.height = '100px';
+      orderCtx.canvas.height = '100px';
 
       new Chart(gainCtx,createChartConfig(gainConfig));
       new Chart(orderCtx,createChartConfig(orderConfig));
@@ -89,7 +89,7 @@ function createChartConfig({labels,data,label,color}) {
   return {
     type:'line',
     options:{
-      responsive:true
+      responsive:true,
     },
     data:{
       labels,
@@ -98,7 +98,7 @@ function createChartConfig({labels,data,label,color}) {
           label,data,
           borderColor:color,
           steppedLine:false,
-          fill:false
+          fill:false,
         }
       ]
     }
